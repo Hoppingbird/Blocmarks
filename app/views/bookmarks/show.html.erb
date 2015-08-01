@@ -1,2 +1,13 @@
-<h1>Bookmarks#show</h1>
-<p>Find me in app/views/bookmarks/show.html.erb</p>
+<div class="container">
+ <ul>
+  <%= link_to "Edit", edit_topic_bookmark_path(@topic, @bookmark), class: 'btn btn-success'%>
+  <%= link_to "Delete", [@topic, @bookmark], method: :delete, class: 'btn btn-danger', data:{confirm: "Are you sure to delete this topic?"} %>
+  <%= link_to 'Add Bookmark', new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
+ </ul>
+  <div class="col-md-4">
+    <p> URL </p>
+    <%= link_to @bookmark.url, @bookmark.url %>
+    <%= link_to "Edit", edit_topic_bookmark_path(@topic, @bookmark), class: 'btn btn-success'%>
+    <%= link_to "Delete", [@topic, @bookmark], method: :delete, class: 'btn btn-danger', data:{confirm: "Are you sure to delete this bookmark?"} %>
+  </div>
+</div>
