@@ -10,16 +10,18 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    authorize @topic
   end
 
   def edit
     @topic = Topic.find(params[:id])
-    @topic.save!
+    authorize @topic
   end
 
   def create
     @topic = Topic.new(params.require(:topic).permit(:title))
     @topic.user = current_user
+    authorize @topic
     if @topic.save
       flash[:notice] = 'Topic created!'
       redirect_to @topic
@@ -31,6 +33,7 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params(:id))
+    authorize @topic
     if @topic.update_attributes(params.require(:topic).permit(:title))
       flash[:notice ] = 'Update successful!'
       redirect_to @topic
@@ -42,6 +45,7 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic = Topic.find(params[:id])
+    authorize @topic
     if @topic.destroy
       flash[:notice] = "\"#{@topic.title}\" was deleted."
       redirect_to topics_path
