@@ -1,15 +1,15 @@
+<h1>This is the Bookmarks show view</h1>
 <div class="container">
  <ul>
-  <% if policy(@bookmark).edit? %>
+   <% if policy(@bookmark).edit? %>
       <%= link_to "Edit", edit_topic_bookmark_path(@topic, @bookmark), class: 'btn btn-success'%>
-      <%= link_to "Delete", [@topic, @bookmark], method: :delete, class: 'btn btn-danger', data:{confirm: "Are you sure to delete this topic?"} %>
+      <%= link_to "Delete", [@topic, @bookmark], method: :delete, class: 'btn btn-danger', data:{confirm: "Are you sure to delete this bookmark?"} %>
       <%= link_to 'Add Bookmark', new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
- <% end %>
+   <% end %>
  </ul>
   <div class="col-md-4">
-    <p> URL </p>
+    <p><h2> Bookmarks for topic - <%= @topic.title %> </h2></p>
     <%= link_to @bookmark.url, @bookmark.url %>
-    <%= link_to "Edit", edit_topic_bookmark_path(@topic, @bookmark), class: 'btn btn-success'%>
-    <%= link_to "Delete", [@topic, @bookmark], method: :delete, class: 'btn btn-danger', data:{confirm: "Are you sure to delete this bookmark?"} %>
-  </div>
+    </div>
+  <%= render partial: 'bookmarks/bookmarks' %>
 </div>

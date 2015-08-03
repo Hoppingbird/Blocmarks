@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   post :incoming, to: 'incoming#create'
 
   resources :topics do
-    resources :bookmarks
-  end
+    resources :bookmarks do
+      resources :likes, only: [:create, :destroy]
+      end
+    end
 
 end

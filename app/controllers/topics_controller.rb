@@ -32,7 +32,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-    @topic = Topic.find(params(:id))
+    @topic = Topic.find(params[:id])
     authorize @topic
     if @topic.update_attributes(params.require(:topic).permit(:title))
       flash[:notice ] = 'Update successful!'
