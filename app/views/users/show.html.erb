@@ -1,0 +1,32 @@
+<h1>This is the Users show view</h1>
+
+<h2>My Blocmarks</h2>
+
+<% @user_bookmarks.each do |bookmark| %>
+    <div class="col-md-4">
+      <%= link_to bookmark.topic.title %>
+      <br />
+      <%= link_to bookmark.url, bookmark.url %>
+    </div>
+    <div class="col-md-4">
+        <%= link_to "remove", topic_bookmark_path(bookmark.topic, bookmark), method: :delete %>
+    </div>
+<% end %>
+</div>
+
+<h2>Liked Blocmarks </h2>
+<div class="row">
+  <% @liked_bookmarks.each do |like| %>
+          <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= like.bookmark.topic.title %>
+                <br />
+                <%= link_to like.bookmark.url, like.bookmark.url %>
+                <%=render partial:"likes/like", locals: {topic: like.bookmark.topic, bookmark: like.bookmark}%>
+              </h4>
+            </div>
+          </div>
+  <% end %>
+</div>
+

@@ -5,4 +5,10 @@
   <li>Maintain a personal index of categorized bookmarks</li>
 </ul>
 
+<% if current_user %>
+    <%= link_to 'Create a new topic', new_topic_path, class: 'btn btn-success' %>
+<% end %>
+
+
+
 
