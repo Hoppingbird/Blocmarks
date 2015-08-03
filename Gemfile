@@ -17,7 +17,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :development, :test do
+group :development do
   gem 'byebug'
   gem 'better_errors'
   gem 'pry'
