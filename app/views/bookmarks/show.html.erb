@@ -1,4 +1,6 @@
 <h1>This is the Bookmarks show view</h1>
+
+<div class="jumbotron">
 <div class="container">
  <ul>
    <% if policy(@bookmark).edit? %>
@@ -11,4 +13,5 @@
     <p><h2> Bookmarks for topic - <%= @topic.title %> </h2></p>
     </div>
   <%= render partial: 'bookmarks/bookmarks' %>
+</div>
 </div>

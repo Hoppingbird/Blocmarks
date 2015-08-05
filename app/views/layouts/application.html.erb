@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Blocmarks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,12 +11,11 @@
 
 
 <div class='container'>
-  <div class="'nav nav-tabs">
-    <ul>
+  <ul class="'nav nav-tabs">
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "About", welcome_about_path %></li>
       <li><%= link_to "Topics", topics_path %></li>
-      <div class="pull-right" >
+      <div class="pull-right user-info" >
         <% if current_user %>
           Hello! <%= link_to current_user.email %>
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
@@ -24,8 +24,7 @@
           <%= link_to "Sign Up", new_user_registration_path %>
         <% end %>
       </div>
-    </ul>
-   </div>
+   </ul>
 
 
     <% if flash[:notice] %>

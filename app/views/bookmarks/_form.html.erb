@@ -1,7 +1,28 @@
 <%= form_for [topic, bookmark] do |f| %>
     <div class="form-group">
       <%= f.label :URL %>
-      <%= f.text_field :url, class: 'form-control', placeholder: "Enter a url for this bookmark" %>
+      <%= f.text_field :url, class: 'form-control', placeholder: "Enter a url for this bookmark", id: 'send-title' %>
     </div>
-    <%= f.submit "Save", class: 'btn btn-success' %>
+    <%= f.submit "Save", class: 'btn btn-success', id:'commit-to-send' %>
 <% end %>
+
+<script type="text/javascript">
+    var blocmetrics = {
+        report: function(val){
+            var event = {
+                event: {
+                    name: val
+                }
+            }
+            var request = new XMLHttpRequest();
+            request.open('POST', 'http://localhost:3000/api/events', true);
+            request.setRequestHeader('Content-Type', 'application/json');
+            request.send(JSON.stringify(event));
+        }
+    }
+    $(document).ready(function(){
+        $('#commit-to-send').click(function(){
+            blocmetrics.report($('#send-title').val());
+        })
+    })
+</script>

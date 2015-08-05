@@ -1,5 +1,7 @@
 <h1>This is the topics show view</h1>
+
 <h1><%= @topic.title %></h1>
+<div class="jumbotron">
     <% if policy(@topic).edit? %>
         <%= link_to 'Edit', edit_topic_path(@topic), class: 'btn btn-success' %>
         <%= link_to 'Delete', @topic, method: :delete, class: 'btn btn-danger', data:{confirm: "Are you sure to delete this topic?"} %>
@@ -10,4 +12,6 @@
     <% if policy(Bookmark.new).create? %>
         <%= link_to 'Add Bookmark', new_topic_bookmark_path(@topic), class: 'btn btn-success' %>
     <% end %>
+</div>
+
 
